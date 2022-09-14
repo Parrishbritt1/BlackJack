@@ -1,28 +1,32 @@
-/**
- * Card Class represents a playing card with a suite and a value.
- */
+package Blackjack;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Card {
-    private CardSuite suite;
-    private CardValue value;
-
-    public Card(CardSuite suite, CardValue value) {
-       this.suite = suite;
-       this.value = value; 
+    CardSuit suit;
+    int rank;
+    CardValue val;
+    
+    public Card(CardSuit suit, int rank, CardValue val){
+        this.suit = suit;
+        this.rank = rank;
+        this.val = val;
     }
-
-    public CardSuite getSuite() {
-        return this.suite;
+    public CardSuit getSuite() {
+        return this.suit;
     }
 
     public CardValue getValue() {
         return this.value;
     }
 
-    public void setSuite(CardSuite suite) {
-        this.suite = suite;
+    public void setSuite(CardSuite suit) {
+        this.suit = suit;
     }
 
     public void setValue(CardValue value) {
         this.value = value;
     }
 }
+

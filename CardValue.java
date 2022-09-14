@@ -1,7 +1,6 @@
-/**
- * Enum for a card value.
- */
+package Blackjack;
+
 public enum CardValue {
-    ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN,
-    JACK, QUEEN, KING, ACE
+    ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN,
+    JACK, QUEEN, KING
 }
