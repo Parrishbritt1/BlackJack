@@ -20,6 +20,10 @@ public class Player {
         this.valueOfHand = 0;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int valueOfHand() {
         return this.valueOfHand;
     }
@@ -39,6 +43,7 @@ public class Player {
      * @return value of hand
      */
     private int updateValueOfHand() {
+        this.valueOfHand = 0;
         for (Card c : hand) {
             if (c.getValue() == CardValue.ACE) {
                 if (this.valueOfHand + c.getValue().getValue() > 21) {

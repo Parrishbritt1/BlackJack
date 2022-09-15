@@ -30,7 +30,7 @@ public class Card {
     }
 
     public String toString() {
-        return "Suit: " + getSuit() + " Val: " + getValue();
+        return "{Suit: " + getSuit() + " Val: " + getValue() + "}";
     }
 }
 
