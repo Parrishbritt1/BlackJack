@@ -17,8 +17,6 @@ public class Deck {
         this.dArray = new ArrayList<Card>(52);
         fillDeck();
         shuffleDeck();
-        Card f = drawCard();
-        System.out.println(f);
     }
 
     /**
@@ -54,6 +52,15 @@ public class Deck {
     public Card drawCard(){
         Card drawnCard = this.dArray.remove(this.dArray.size() - 1);
         return(drawnCard);
+    }
+
+    /**
+     * Prints the deck of cards
+     */
+    public void printDeck() {
+        for (Card c : this.dArray) {
+            System.out.print(c + " ");
+        }
     }
 }
 
