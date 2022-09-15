@@ -20,14 +20,13 @@ public class Deck {
         int[] rank = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         int x = 0;
         int y = 0;
-        
-        CardSuit[] sList = CardSuit.values();
-        CardValue[] vList = CardValue.values();
-        System.out.println(sList);
+
+        //CardSuit[] sList = CardSuit.values();
+        //CardValue[] vList = CardValue.values();
         
         for (int z = 0; z < 52; z++){     
 
-            Card c = new Card(vlist[x], rank[y], sList[y]);
+            Card c = new Card(CardValue.values()[x], rank[y], CardSuit.values()[y]);
             addCard(c);
             if (y >= 12){
                 x += 1;
