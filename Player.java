@@ -24,6 +24,7 @@ public class Player {
         return this.valueOfHand;
     }
 
+
     /**
      * Player hits (adds card to hand and updates value of hand)
      * @param card Card that will be added to hand
@@ -32,6 +33,18 @@ public class Player {
         this.hand.add(card);
         updateValueOfHand();
     }
+
+    /**
+     * Player stands (doesn't add cards to hand)
+     */
+    public void stand(){
+        updateValueOfHand();
+    }
+
+    /**
+     * RETURN HAND
+     */
+
 
     /**
      * Private helper method
