@@ -20,14 +20,21 @@ public class Deck {
         int[] rank = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         int x = 0;
         int y = 0;
+        
+        CardSuit[] sList = CardSuit.values();
+        CardValue[] vList = CardValue.values();
+        System.out.println(sList);
+        
         for (int z = 0; z < 52; z++){     
-            Card c = new Card(CardSuit.values()[x], rank[y], CardValue.values()[y]);
+
+            Card c = new Card(vlist[x], rank[y], sList[y]);
             addCard(c);
             if (y >= 12){
                 x += 1;
                 y = 0;
             }
         }
+        
     }
 
     public void addCard(Card c){
@@ -36,3 +43,5 @@ public class Deck {
         System.out.println(dArray.size());
     }   
 }
+
+
