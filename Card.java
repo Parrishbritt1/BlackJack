@@ -1,32 +1,37 @@
 package Blackjack;
 
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import Blackjack.CardSuit;
+import Blackjack.CardValue;
 
 public class Card {
-    CardSuit suit;
-    int rank;
-    CardValue val;
+    private CardSuit suit;
+    private CardValue val;
     
-    public Card(CardSuit suit, int rank, CardValue val){
+    public Card(CardSuit suit, CardValue val){
         this.suit = suit;
-        this.rank = rank;
         this.val = val;
     }
-    public CardSuit getSuite() {
+    public CardSuit getSuit() {
         return this.suit;
     }
 
     public CardValue getValue() {
-        return this.value;
+        return this.val;
     }
 
-    public void setSuite(CardSuite suit) {
+    public void setSuite(CardSuit suit) {
         this.suit = suit;
     }
 
-    public void setValue(CardValue value) {
-        this.value = value;
+    public void setValue(CardValue val) {
+        this.val = val;
+    }
+
+    public String toString() {
+        return "Suit: " + getSuit() + " Val: " + getValue();
     }
 }
 
