@@ -10,4 +10,8 @@ public enum CardValue {
     private CardValue(int val) {
         this.val = val;
     }
+
+    public int getValue() {
+        return this.val;
+    }
 }
