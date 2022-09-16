@@ -6,6 +6,7 @@ public class RUNNER {
         Deck d = new Deck();
         Player p = new Player("PSlatt");
         p.hit(d.drawCard());
-        d.printDeck();
+        System.out.println(p);
+        // d.printDeck();
     }
 }
