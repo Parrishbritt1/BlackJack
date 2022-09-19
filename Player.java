@@ -73,4 +73,8 @@ public class Player {
         }
         return this.valueOfHand;
     }
+
+    public String toString() {
+        return "Player - " + this.name + " Hand - " + this.hand;
+    }
 }
