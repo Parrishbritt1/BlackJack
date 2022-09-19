@@ -3,8 +3,12 @@ package Blackjack;
 import Blackjack.CardValue;
 import Blackjack.Card;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-
+/*
+ * TO DO
+ * add setup method that asks for player name, creates house and player obj, deals out cards (signifies beginning of game basically)
+ */
 public class Player {
     private ArrayList<Card> hand;
     private int valueOfHand;
