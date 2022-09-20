@@ -32,7 +32,6 @@ public class Player {
         return this.valueOfHand;
     }
 
-
     /**
      * Player hits (adds card to hand and updates value of hand)
      * @param card Card that will be added to hand
@@ -50,9 +49,15 @@ public class Player {
     }
 
     /**
-     * RETURN HAND
+     * Checks if player goes bust, (hand value > 21)
+     * @return boolean if player is bust
      */
-
+    public boolean isBust(){
+        if (valueOfHand() > 21){
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Private helper method
