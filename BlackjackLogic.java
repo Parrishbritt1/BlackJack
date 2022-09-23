@@ -78,9 +78,12 @@ public class BlackjackLogic {
      * Houses turn, house will hit until valueofHand >= 17
      */
     public void houseTurn(){
-        while (house.valueOfHand() < 17){
+        while (house.valueOfHand() < 17 && house.isBust() == false){
             house.hit(deck.drawCard());
             System.out.println("HOUSE HAND: " + house.valueOfHand());
+        }
+        if (house.isBust() == true){
+            System.out.println("HOUSE BUSTS - YOU WIN");
         }
     }
 }
