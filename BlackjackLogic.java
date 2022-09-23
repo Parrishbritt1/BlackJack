@@ -6,17 +6,19 @@ import java.util.Scanner;
 import javax.management.ValueExp;
 
 public class BlackjackLogic {
-    Scanner scan = new Scanner(System.in);
-    Deck deck;
-    Player house;
-    Player p;
-    int option;
+    private Deck deck;
+    private Player house;
+    private Player p;
+    private int option;
+
     public BlackjackLogic() {
+        Scanner scan = new Scanner(System.in);
         this.deck = new Deck();
         this.house = new Player("House");
         this.option = 0;
         System.out.print("Enter player name: ");
         String pName = scan.nextLine();
+        scan.close();
         this.p = new Player(pName);
         setup();
     }
@@ -36,8 +38,10 @@ public class BlackjackLogic {
      * Prints game guidance ie. "Hit or stand"
      */
     public int gameOutput(){
+        Scanner scan = new Scanner(System.in);
         System.out.println("Input the number of the desired move: 1: hit | 2: Stand");
         this.option = scan.nextInt();
+        scan.close();
         return this.option;
     }
 
