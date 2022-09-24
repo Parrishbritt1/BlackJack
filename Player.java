@@ -42,21 +42,10 @@ public class Player {
     }
 
     /**
-     * Player stands (doesn't add cards to hand)
+     * Removes all cards from hand.
      */
-    public void stand(){
-        updateValueOfHand();
-    }
-
-    /**
-     * Checks if player goes bust, (hand value > 21)
-     * @return boolean if player is bust
-     */
-    public boolean isBust(){
-        if (valueOfHand() > 21){
-            return true;
-        }
-        return false;
+    public void clearHand() {
+        this.hand.clear();
     }
 
     /**

@@ -51,7 +51,7 @@ public class Deck {
      */
     public Card drawCard(){
         Card drawnCard = this.dArray.remove(this.dArray.size() - 1);
-        return(drawnCard);
+        return drawnCard;
     }
 
     /**
