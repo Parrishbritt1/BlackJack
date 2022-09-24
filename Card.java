@@ -38,20 +38,19 @@ public class Card {
 
     public String cardArt() {
         String suit = getSuit().getSuit();
-        if (getValue().getValue() > 9){
-            String symbol = getSymbol().getSymbol();
-        }
-        else{
-            int symbol = getValue().getValue();
+        String symbol = getValue().getSymbol();
+        String filler = " ";
+        if (getValue().getValue() == 10){
+            filler = "";
         }
         String rows = "\n┌───────────┐\n" +
-        String.format("│ %d        │\n", val) +             
+        String.format("│ %s%s        │\n", symbol, filler) +             
         String.format("│ %s         │\n", suit) +  
-        "│          │\n" + 
+        "│           │\n" + 
         String.format("│    %s      │\n", suit) + 
-        "│          │\n" +
+        "│           │\n" +
         String.format("│         %s │\n", suit) +
-        String.format("│        %d │\n", val) + 
+        String.format("│        %s%s │\n", filler, symbol) + 
         "└───────────┘\n";
         return rows;
     }
