@@ -2,6 +2,9 @@ package Blackjack;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import javax.xml.namespace.QName;
+
 import Blackjack.CardSuit;
 import Blackjack.CardValue;
 
@@ -30,7 +33,27 @@ public class Card {
     }
 
     public String toString() {
-        return "{Suit: " + getSuit() + " Val: " + getValue() + "}";
+        return cardArt();
+    }
+
+    public String cardArt() {
+        String suit = getSuit().getSuit();
+        if (getValue().getValue() > 9){
+            String symbol = getSymbol().getSymbol();
+        }
+        else{
+            int symbol = getValue().getValue();
+        }
+        String rows = "\n┌───────────┐\n" +
+        String.format("│ %d        │\n", val) +             
+        String.format("│ %s         │\n", suit) +  
+        "│          │\n" + 
+        String.format("│    %s      │\n", suit) + 
+        "│          │\n" +
+        String.format("│         %s │\n", suit) +
+        String.format("│        %d │\n", val) + 
+        "└───────────┘\n";
+        return rows;
     }
 }
 

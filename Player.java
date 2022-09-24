@@ -12,6 +12,8 @@ import java.util.Scanner;
 public class Player {
     private ArrayList<Card> hand;
     private int valueOfHand;
+    private int bankroll;
+    private int bet;
     private String name;
 
     /**
@@ -22,6 +24,8 @@ public class Player {
         this.hand = new ArrayList<Card>();
         this.name = name;
         this.valueOfHand = 0;
+        this.bet = 0;
+        this.bankroll = 1000;
     }
 
     public String getName() {
@@ -30,6 +34,19 @@ public class Player {
 
     public int valueOfHand() {
         return this.valueOfHand;
+    }
+
+    public int getBankroll() {
+        return this.bankroll;
+    }
+    
+    /**
+     * Adds bet amount to total bet, subtracts bet amount from bankroll
+     * @param newBet is input bet amount 
+     */
+    public void makeBet(int newBet) {
+        this.bet += newBet;
+        this.bankroll -= this.bet;
     }
 
     /**
@@ -44,15 +61,24 @@ public class Player {
     /**
      * Player stands (doesn't add cards to hand)
      */
-    public void stand(){
+    public void stand() {
         updateValueOfHand();
+    }
+
+    /**
+     * Player adds 1 more card to hand and doubles current bet
+     */
+    public void doubleDown(Card card) {
+        makeBet(this.bet);
+        this.hit(card);
+        this.stand();
     }
 
     /**
      * Checks if player goes bust, (hand value > 21)
      * @return boolean if player is bust
      */
-    public boolean isBust(){
+    public boolean isBust() {
         if (valueOfHand() > 21){
             return true;
         }
