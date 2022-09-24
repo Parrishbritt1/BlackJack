@@ -39,7 +39,7 @@ public class Card {
     public String cardArt() {
         String suit = getSuit().getSuit();
         if (getValue().getValue() > 9){
-            String symbol = getSymbol().getSymbol();
+            String symbol = getValue().getSymbol();
         }
         else{
             int symbol = getValue().getValue();
