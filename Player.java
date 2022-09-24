@@ -39,6 +39,10 @@ public class Player {
     public int getBankroll() {
         return this.bankroll;
     }
+
+    public int getBet() {
+        return this.bet;
+    }
     
     /**
      * Adds bet amount to total bet, subtracts bet amount from bankroll
@@ -56,6 +60,15 @@ public class Player {
     public void hit(Card card) {
         this.hand.add(card);
         updateValueOfHand();
+    }
+
+    /**
+     * Player doubles down (player hits and doubles the bet)
+     * @param card Card that will be added to hand
+     */
+    public void doubleDown(Card card) {
+        this.hit(card);
+        this.makeBet(this.bet);
     }
 
     /**

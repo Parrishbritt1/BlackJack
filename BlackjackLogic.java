@@ -20,11 +20,14 @@ public class BlackjackLogic {
         mainLoop();
     }
 
+    /**
+     * Main game loop logic
+     */
     private void mainLoop() {
         do {
             // Place bet
             System.out.println("Place your bet: ");
-            this.player.makeBet(scan.next());
+            this.player.makeBet((scan.nextInt()));
 
             // Draw cards
             this.player.hit(this.deck.drawCard());
@@ -75,6 +78,9 @@ public class BlackjackLogic {
         }
     }
 
+    /**
+     * Prints all player's hands
+     */
     private void printPlayerHands() {
         System.out.println(this.player);
         System.out.println(this.house);
@@ -82,7 +88,7 @@ public class BlackjackLogic {
 
     /**
      * Prints game guidance ie. "Hit, double down, or stand"
-     * @return Player's choice 1, 2, or 3
+     * @return Player's choice 1, 2, 3, or -1 if ERROR
      */
     public int playerChoice() {
         int choice = -1;
