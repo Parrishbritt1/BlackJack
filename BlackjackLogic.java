@@ -1,85 +1,113 @@
 package Blackjack;
 
 import Blackjack.Deck;
-import java.util.Scanner;
 
-import javax.management.ValueExp;
+import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class BlackjackLogic {
-    Scanner scan = new Scanner(System.in);
-    Deck deck;
-    Player house;
-    Player p;
-    int option;
+    private Deck deck;
+    private Player house;
+    private Player player;
+    private static final Scanner scan = new Scanner(System.in);
+
     public BlackjackLogic() {
+        System.out.println("Enter player name: ");
+        this.player = new Player(scan.next());
         this.deck = new Deck();
         this.house = new Player("House");
-        this.option = 0;
-        System.out.print("Enter player name: ");
-        String pName = scan.nextLine();
-        this.p = new Player(pName);
-        setup();
+        mainLoop();
     }
 
-    /**
-     * Game setup, drawing 1 card for house and 2 cards for player
-     */
-    public void setup(){
-        house.hit(deck.drawCard());
-        p.hit(deck.drawCard());
-        p.hit(deck.drawCard());
-        playerInfo();
-        playerOption();
-    }
+    private void mainLoop() {
+        do {
+            // Place bet
+            System.out.println("Place your bet: ");
+            this.player.makeBet(scan.next());
 
-    /**
-     * Prints game guidance ie. "Hit or stand"
-     */
-    public int gameOutput(){
-        System.out.println("Input the number of the desired move: 1: hit | 2: Stand");
-        this.option = scan.nextInt();
-        return this.option;
-    }
+            // Draw cards
+            this.player.hit(this.deck.drawCard());
+            this.player.hit(this.deck.drawCard());
+            this.house.hit(this.deck.drawCard());
+            printPlayerHands();
 
-    /*
-     * Prints player game information
-     */
-    public void playerInfo(){
-        System.out.println(p);
-        System.out.println("HAND VALUE: " + p.valueOfHand());
-    }
-
-    /**
-     * Presents player with choice of hit or stand
-     * Calls houseTurn method once player stands
-     * Ends game if player busts
-     */
-    public void playerOption(){
-        while (this.option != 2 && p.isBust() == false){
-            this.option = gameOutput();
-            if (this.option == 1){
-                p.hit(deck.drawCard());
-                playerInfo();
+            // Player choice
+            int playerChoice = playerChoice();
+            while (playerChoice != 3 && this.player.valueOfHand() < 21) {
+                switch(playerChoice) {
+                    case 1: // Hit
+                        this.player.hit(this.deck.drawCard());
+                        printPlayerHands();
+                        break;
+                    case 2: // Double down
+                        this.player.doubleDown(this.deck.drawCard());
+                        printPlayerHands();
+                        playerChoice = 3; // Stand after doubling
+                        break;
+                }    
             }
-        }
-        if (p.isBust() == false){
-            houseTurn();
-        }
-        else{
-            System.out.println("BUST");
-        }
+            checkConditions();
+            this.player.clearHand();
+            this.house.clearHand();
+        } while (true);
     }
 
     /**
-     * Houses turn, house will hit until valueofHand >= 17
+     * Print if player won or not.
      */
-    public void houseTurn(){
-        while (house.valueOfHand() < 17 && house.isBust() == false){
-            house.hit(deck.drawCard());
-            System.out.println("HOUSE HAND: " + house.valueOfHand());
+    private void checkConditions() {
+        // Player hand <= 21
+        if (this.player.valueOfHand() <= 21) {
+            houseTurn();
+            if (this.house.valueOfHand() > 21) {
+                System.out.println("HOUSE BUSTED - YOU WON");
+            } else if (this.house.valueOfHand() > this.player.valueOfHand()) {
+                System.out.println("YOU LOST");
+            } else if (this.house.valueOfHand() < this.player.valueOfHand()) {
+                System.out.println("YOU WON");
+            } else {
+                System.out.println("YOU PUSHED");
+            }
+        // Player Busted
+        } else {
+            System.out.println("YOU BUSTED RIP");
         }
-        if (house.isBust() == true){
-            System.out.println("HOUSE BUSTS - YOU WIN");
+    }
+
+    private void printPlayerHands() {
+        System.out.println(this.player);
+        System.out.println(this.house);
+    }
+
+    /**
+     * Prints game guidance ie. "Hit, double down, or stand"
+     * @return Player's choice 1, 2, or 3
+     */
+    public int playerChoice() {
+        int choice = -1;
+        do {
+            try {
+                System.out.println("Input the number of the desired move: 1: Hit | 2: Double down | 3: Stand");
+                choice = Integer.parseInt(scan.next());
+                if (choice != 1 || choice != 2 || choice != 3) {
+                    System.out.println(choice + "is not a valid choice!");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input is not a valid integer");
+            }
+        } while (!scan.hasNextInt());
+        return choice;
+    }
+
+    /**
+     * Houses turn
+     */
+    public void houseTurn() {
+        System.out.println("House's Turn");
+        while (house.valueOfHand() < 17){
+            house.hit(deck.drawCard());
         }
     }
 }

@@ -59,30 +59,10 @@ public class Player {
     }
 
     /**
-     * Player stands (doesn't add cards to hand)
+     * Removes all cards from hand.
      */
-    public void stand() {
-        updateValueOfHand();
-    }
-
-    /**
-     * Player adds 1 more card to hand and doubles current bet
-     */
-    public void doubleDown(Card card) {
-        makeBet(this.bet);
-        this.hit(card);
-        this.stand();
-    }
-
-    /**
-     * Checks if player goes bust, (hand value > 21)
-     * @return boolean if player is bust
-     */
-    public boolean isBust() {
-        if (valueOfHand() > 21){
-            return true;
-        }
-        return false;
+    public void clearHand() {
+        this.hand.clear();
     }
 
     /**
