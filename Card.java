@@ -1,12 +1,12 @@
-package Blackjack;
+package BlackJack;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 
-import Blackjack.CardSuit;
-import Blackjack.CardValue;
+import BlackJack.CardSuit;
+import BlackJack.CardValue;
 
 public class Card {
     private CardSuit suit;

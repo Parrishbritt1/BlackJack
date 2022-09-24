@@ -1,6 +1,6 @@
-package Blackjack;
+package BlackJack;
 
-import Blackjack.Deck;
+import BlackJack.Deck;
 
 import java.util.Scanner;
 import java.util.ArrayList;

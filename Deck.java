@@ -1,9 +1,9 @@
-package Blackjack;
+package BlackJack;
 
 import java.util.ArrayList;
-import Blackjack.Card;
-import Blackjack.CardSuit;
-import Blackjack.CardValue;
+import BlackJack.Card;
+import BlackJack.CardSuit;
+import BlackJack.CardValue;
 import java.util.Collections;
 
 

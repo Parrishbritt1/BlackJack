@@ -1,4 +1,4 @@
-package Blackjack;
+package BlackJack;
 
 
 public class RUNNER {
