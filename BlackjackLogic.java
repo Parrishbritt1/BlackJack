@@ -95,11 +95,7 @@ public class BlackjackLogic {
         do {
             System.out.println("Input the number of the desired move: 1: Hit | 2: Double down | 3: Stand");
             choice = scan.nextInt();
-            if (choice != 1 && choice != 2 && choice != 3) {
-                System.out.println(choice + "is not a valid choice!");
-                continue;
-            }
-        } while (!scan.hasNextInt());
+        } while (choice != 1 && choice != 2 && choice != 3);
         return choice;
     }
 
