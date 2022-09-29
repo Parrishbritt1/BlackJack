@@ -40,7 +40,8 @@ public class Card {
         String suit = getSuit().getSuit();
         String symbol = getValue().getSymbol();
         String filler = " ";
-        if (getValue().getValue() == 10){
+        
+        if (getValue() == CardValue.TEN){
             filler = "";
         }
         String rows = "\n┌───────────┐\n" +
@@ -51,7 +52,7 @@ public class Card {
         "│           │\n" +
         String.format("│         %s │\n", suit) +
         String.format("│        %s%s │\n", filler, symbol) + 
-        "└───────────┘\n";
+        "└───────────┘";
         return rows;
     }
 }

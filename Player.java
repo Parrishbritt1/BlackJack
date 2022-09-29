@@ -99,6 +99,6 @@ public class Player {
     }
 
     public String toString() {
-        return "Player - " + this.name + " Hand - " + this.hand;
+        return "Player - " + this.name + "'s Hand - \n" + this.hand;
     }
 }

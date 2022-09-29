@@ -2,10 +2,10 @@ package BlackJack;
 
 
 public enum CardSuit{
-    SPADE("♠"),
-    CLUB("♣"),
-    HEART("♥"),
-    DIAMOND("♦");
+    SPADE("S"),
+    CLUB("C"),
+    HEART("H"),
+    DIAMOND("D");
 
     private String suit;
 
