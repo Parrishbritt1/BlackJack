@@ -98,7 +98,64 @@ public class Player {
         return this.valueOfHand;
     }
 
+    /**
+     * Prints the Player's hand to the screen ASCII format
+     */
+    public void displayHand() {
+        // ArrayList<String> rows = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            String s = "";
+            for (Card c : this.hand) {
+                String symbol = c.getValue().getSymbol();
+                String suit = c.getSuit().getSuit();
+                String filler = " ";
+                if (c.getValue() == CardValue.TEN){
+                    filler = "";
+                }
+                switch(i) {
+                    case 0:
+                        s += "┌───────────┐";
+                        // rows.append(s);
+                        break;
+                    case 1:
+                        s += String.format("│ %s%s        │", symbol, filler);
+                        // rows.append(s);
+                        break;
+                    case 2:
+                        s += String.format("│ %s         │", suit);
+                        // rows.append(s);
+                        break;
+                    case 3:
+                        s += "│           │";
+                        // rows.append(s);
+                        break;
+                    case 4:
+                        s += String.format("│    %s      │", suit);
+                        // rows.append(s);
+                        break;
+                    case 5:
+                        s += "│           │";
+                        // rows.append(s);
+                        break;
+                    case 6:
+                        s += String.format("│         %s │", suit);
+                        // rows.append(s);
+                        break;
+                    case 7:
+                        s += String.format("│        %s%s │", filler, symbol);
+                        // rows.append(s);
+                        break;
+                    case 8:
+                        s += "└───────────┘";
+                        // rows.append(s);
+                        break;
+                }
+            }
+            System.out.println(s);
+        }
+    }
+
     public String toString() {
-        return "Player - " + this.name + "'s Hand - \n" + this.hand;
+        return "Player - " + this.name + "\n";
     }
 }

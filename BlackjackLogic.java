@@ -1,10 +1,7 @@
 package BlackJack;
 
-import BlackJack.Deck;
-
 import java.util.Scanner;
-import java.util.ArrayList;
-
+import java.lang.Runtime;
 
 public class BlackjackLogic {
     private Deck deck;
@@ -25,6 +22,11 @@ public class BlackjackLogic {
      */
     private void mainLoop() {
         do {
+            try {
+                Runtime.getRuntime().exec("cls");
+            } catch (Exception e) {
+                System.out.println("cls didn't work...");
+            }
             // Place bet
             System.out.println("Place your bet: ");
             this.player.makeBet((scan.nextInt()));
@@ -84,7 +86,9 @@ public class BlackjackLogic {
      */
     private void printPlayerHands() {
         System.out.println(this.player);
+        this.player.displayHand();
         System.out.println(this.house);
+        this.house.displayHand();
     }
 
     /**

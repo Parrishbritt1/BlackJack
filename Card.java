@@ -32,6 +32,7 @@ public class Card {
         this.val = val;
     }
 
+    @Override
     public String toString() {
         return cardArt();
     }
@@ -44,15 +45,15 @@ public class Card {
         if (getValue() == CardValue.TEN){
             filler = "";
         }
-        String rows = "\n┌───────────┐\n" +
-        String.format("│ %s%s        │\n", symbol, filler) +             
-        String.format("│ %s         │\n", suit) +  
-        "│           │\n" + 
-        String.format("│    %s      │\n", suit) + 
-        "│           │\n" +
-        String.format("│         %s │\n", suit) +
-        String.format("│        %s%s │\n", filler, symbol) + 
-        "└───────────┘";
+        String rows = "\n┌───────────┐\t" +
+        String.format("\n│ %s%s        │\t", symbol, filler) +             
+        String.format("\n│ %s         │\t", suit) +  
+                              "\n│           │\t" + 
+        String.format("\n│    %s      │\t", suit) + 
+                              "\n│           │\t" +
+        String.format("\n│         %s │\t", suit) +
+        String.format("\n│        %s%s │\t", filler, symbol) + 
+                               "\n└───────────┘";
         return rows;
     }
 }
