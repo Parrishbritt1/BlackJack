@@ -51,7 +51,7 @@ public class Card {
         "│           │\n" +
         String.format("│         %s │\n", suit) +
         String.format("│        %s%s │\n", filler, symbol) + 
-        "└───────────┘\n";
+        "└───────────┘";
         return rows;
     }
 }
