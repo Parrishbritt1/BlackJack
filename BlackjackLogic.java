@@ -38,6 +38,7 @@ public class BlackjackLogic {
             // Player choice
             int playerChoice = playerChoice();
             while (playerChoice != 3 && this.player.valueOfHand() < 21) {
+                System.out.println("Current Bet: " + this.player.getBet());
                 switch(playerChoice) {
                     case 1: // Hit
                         this.player.hit(this.deck.drawCard());
