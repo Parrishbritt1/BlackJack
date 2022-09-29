@@ -2,6 +2,7 @@ package BlackJack;
 
 import java.util.Scanner;
 import java.lang.Runtime;
+import java.util.concurrent.TimeUnit;
 
 public class BlackjackLogic {
     private Deck deck;
@@ -18,15 +19,23 @@ public class BlackjackLogic {
     }
 
     /**
+     *  HELPER METHOD to clear cmd
+     */
+    private void clearConsole() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println("cls didn't work... Exception: " + e);
+        }
+    }
+
+    /**
      * Main game loop logic
      */
     private void mainLoop() {
         do {
-            try {
-                Runtime.getRuntime().exec("cls");
-            } catch (Exception e) {
-                System.out.println("cls didn't work...");
-            }
+            clearConsole();
+
             // Place bet
             System.out.println("Place your bet: ");
             this.player.makeBet((scan.nextInt()));
@@ -44,14 +53,19 @@ public class BlackjackLogic {
                 switch(playerChoice) {
                     case 1: // Hit
                         this.player.hit(this.deck.drawCard());
+                        clearConsole();
                         printPlayerHands();
                         break;
                     case 2: // Double down
                         this.player.doubleDown(this.deck.drawCard());
+                        clearConsole();
                         printPlayerHands();
                         playerChoice = 3; // Stand after doubling
                         break;
-                }    
+                }
+                if (this.player.valueOfHand() < 21 || playerChoice == 2) {
+                    playerChoice = playerChoice();    
+                }
             }
             checkConditions();
             this.player.clearHand();
@@ -78,6 +92,11 @@ public class BlackjackLogic {
         // Player Busted
         } else {
             System.out.println("YOU BUSTED RIP");
+        }
+        try{
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            System.out.println("error: " + e);
         }
     }
 
@@ -107,10 +126,18 @@ public class BlackjackLogic {
     /**
      * Houses turn
      */
-    public void houseTurn() {
+    public void houseTurn()  {
         System.out.println("House's Turn");
-        while (house.valueOfHand() < 17){
-            house.hit(deck.drawCard());
+        try {
+            TimeUnit.SECONDS.sleep(2);
+            while (house.valueOfHand() < 17){
+                house.hit(deck.drawCard());
+                clearConsole();
+                printPlayerHands();
+                TimeUnit.SECONDS.sleep(1);
+            }
+        } catch (InterruptedException e) {
+            System.out.println("House's Turn Error: " + e);
         }
     }
 }

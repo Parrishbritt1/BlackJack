@@ -90,6 +90,8 @@ public class Player {
                 if (this.valueOfHand + c.getValue().getValue() > 21) {
                     this.valueOfHand += 1;
                     continue;
+                } else {
+                    this.valueOfHand += c.getValue().getValue();
                 }
             } else {
                 this.valueOfHand += c.getValue().getValue();
@@ -156,6 +158,6 @@ public class Player {
     }
 
     public String toString() {
-        return "Player - " + this.name + "\n";
+        return "Player - " + this.name + " | Hand Value: " + valueOfHand() + "\n"; 
     }
 }
