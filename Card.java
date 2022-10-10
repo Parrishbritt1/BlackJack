@@ -31,12 +31,12 @@ public class Card {
     public void setValue(CardValue val) {
         this.val = val;
     }
-
+    /* 
     @Override
     public String toString() {
         return cardArt();
     }
-
+     
     public String cardArt() {
         String suit = getSuit().getSuit();
         String symbol = getValue().getSymbol();
@@ -56,5 +56,6 @@ public class Card {
                                "\n└───────────┘";
         return rows;
     }
+    */
 }
 

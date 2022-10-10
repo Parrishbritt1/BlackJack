@@ -48,7 +48,7 @@ public class BlackjackLogic {
 
             // Player choice
             int playerChoice = playerChoice();
-            while (playerChoice != 3 && this.player.valueOfHand() < 21) {
+            while ((playerChoice != 2 || playerChoice != 3) && this.player.valueOfHand() < 21) {
                 System.out.println("Current Bet: " + this.player.getBet());
                 switch(playerChoice) {
                     case 1: // Hit
@@ -63,7 +63,7 @@ public class BlackjackLogic {
                         playerChoice = 3; // Stand after doubling
                         break;
                 }
-                if (this.player.valueOfHand() < 21 || playerChoice == 2) {
+                if (this.player.valueOfHand() < 21 && (playerChoice != 2 || playerChoice != 3)) {
                     playerChoice = playerChoice();    
                 }
             }
@@ -94,7 +94,7 @@ public class BlackjackLogic {
             System.out.println("YOU BUSTED RIP");
         }
         try{
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             System.out.println("error: " + e);
         }
